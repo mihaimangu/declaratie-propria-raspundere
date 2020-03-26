@@ -30,21 +30,74 @@
 }
 
 .formular-wrapper{
-  width: 60vw;
+  width: 90vw;
+  max-width: 60rem;
   /* min-height: 100vh; */
-  background: red;
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   align-content: center;
   div, header{
-    width: 100%;
+    // width: 100%;
+  }
+}
+
+.form-wrapper{
+  width: 100%;
+  text-align: left;
+  line-height: 1.9;
+  font-size: 1.1rem;
+  input{
+    display: inline;
+  }
+  input{
+    width: auto;
+    // background: red;
+    border: 1px solid transparent;
+    background: transparent;
+    // border-bottom: 1px solid black;
+    padding: 0;
+    // margin-bottom: 2px;
+    // margin-top: -5px;
+    text-align: center;
+  }
+}
+
+.form-row{
+  background: #ececec;
+  padding: 1.3rem;
+  margin-bottom: 1.5rem;
+  div{
+    // width: 100%;
+    min-width: 120px;
+    text-align: center;
+    // background: red;
+    border-bottom: 1px solid black;
+    // padding-left: 15px
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 3px;
   }
 }
 
 .jumbo-paragraph{
   font-size: 1.3rem;
+}
+
+
+.initial-data--inner-wrapper{
+  // background: red;
+  
+
+}
+
+.signature-wrapper{
+  display: flex;
+  flex-direction: column;
+  canvas{
+    border: 1px solid black;
+  }
 }
 
 @keyframes App-logo-spin {
