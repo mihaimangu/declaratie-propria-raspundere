@@ -2,9 +2,14 @@ import React, {useState} from 'react';
 import { Button, FormGroup, FormControl, FormLabel, Jumbotron } from "react-bootstrap";
 import AutosizeInput from 'react-input-autosize'
 import SignatureCanvas from 'react-signature-canvas';
+//import { Document, Page, Text,  View, PDFDownloadLink, PDFViewer } from 'react-pdf';
 
 import logo from '../logo.svg';
+import MyDocument from '../components/pdf';
 
+import { Document, Page, Text, View, StyleSheet, PDFViewer } from '@react-pdf/renderer';
+
+ 
 
 function Formular(){
     
@@ -132,6 +137,7 @@ function Formular(){
                     </div>
 
                     <h3>Pasul 4: Data și semnătura</h3>
+                    <p>Folosește mouse-ul sau degetul (în cazul unui dispozitiv cu touch-screen) pentru a realiza semnătura</p>
 
                     <div className="data-2nd-row form-row">
                         <section> 
@@ -149,9 +155,17 @@ function Formular(){
 
                 </FormGroup>    
             </section>
-            
+          
+          <section className="preview-wrapper">
+            <PDFViewer>
+                <MyDocument values={values} />
+             </PDFViewer>
+          </section>
+           
 
         </div>
+
+      
        
             
         </div>
