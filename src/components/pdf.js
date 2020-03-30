@@ -5,6 +5,7 @@ import { Document, Page, Text, View, Image, StyleSheet, PDFViewer, Font } from '
 import RobotoLight from '../fonts/Roboto-Light.ttf';
 import RobotoMedium from '../fonts/Roboto-Medium.ttf';
 
+
 Font.register({
   family: "Roboto",
   src: RobotoMedium
@@ -24,11 +25,11 @@ const styles ={
         flexDirection: 'column',
         width: 100,
         padding: 40,
-        fontSize: 13
+        fontSize: 12
     },
     heading:{
         textAlign: 'center',
-        marginBottom: 30,
+        marginBottom: 20,
 
     },
     section: {
@@ -71,10 +72,16 @@ const styles ={
     },
     singleReason:{
       marginBottom: '5',
+      display: 'flex',
+      flexDirection: 'row'
+    
     },
     signatureImage:{
       maxWidth: 200,
       maxHeight: 200,
+    },
+    textCheckMark:{
+      display: 'inline',
     }
 
   };
@@ -101,7 +108,7 @@ const MyDocument = ({values, reasons, theDate, signature}) => (
                     <Text style={styles.input1}>{values.residence}</Text>
               </View>
            
-            <View style={{display:'flex', flexDirection:'column', marginTop: 20, marginBottom: 0, justifyContent: 'flex-start', textAlign: 'left'}}>
+            <View style={{display:'flex', flexDirection:'column', marginTop: 10, marginBottom: 0, justifyContent: 'flex-start', textAlign: 'left'}}>
                 <Text>Locul/locurile deplasării</Text>
                 <View style={styles.input2}><Text>{values.to}</Text></View>
             </View>
@@ -119,15 +126,55 @@ const MyDocument = ({values, reasons, theDate, signature}) => (
         <View style={styles.section}>
             <Text style={{marginBottom: 5}}>Motivul deplasarii:</Text>
             <View style={styles.reasonsWrapper}>
-                {reasons[1] &&  <View style={styles.singleReason}><Text>Interes profesional, inclusiv între locuință/gospodărie și locul/locurile de desfășurare a activității profesionale și înapoi</Text></View>}
-                {reasons[2] &&  <View style={styles.singleReason}><Text>Asigurarea de bunuri care acoperă necesitățile de bază ale persoanelor și animalelor de companie/domestice</Text></View>}
-                {reasons[3] &&  <View style={styles.singleReason}><Text>Asistență medicală care nu poate fi amânată și nici realizată de la distanță</Text></View>}
-                {reasons[4] &&  <View style={styles.singleReason}><Text>Motive justificate, precum îngrijirea/ însoțirea unui minor/copilului, asistența persoanelor vârstnice, bolnave sau cu dizabilități ori deces al unui membru de familie</Text></View>}
-                {reasons[5] &&  <View style={styles.singleReason}><Text>Activitate fizică individuală (cu excluderea oricăror activități sportive de echipă/ colective) sau pentru nevoile animalelor de companie/domestice, în apropierea locuinței</Text></View>}
-                {reasons[6] &&  <View style={styles.singleReason}><Text>Realizarea de activități agricole</Text></View>}
-                {reasons[7] &&  <View style={styles.singleReason}><Text>Scopuri umanitare sau de voluntariat;</Text></View>}
-                {reasons[8] &&  <View style={styles.singleReason}><Text>Comercializarea de produse agroalimentare (în cazul producătorilor agricoli)</Text></View>}
-                {reasons[9] &&  <View style={styles.singleReason}><Text>Asigurarea de bunuri necesare desfășurării activității profesionale.</Text></View>}
+               
+                 
+                 <View style={styles.singleReason}>
+                   <Text style={styles.textCheckMark}> {reasons[1] ? "(x)" : "( )"}</Text>
+                   <Text >Interes profesional, inclusiv între locuință/gospodărie și locul/locurile de desfășurare a activității profesionale și înapoi
+                   </Text>
+                 </View>
+             
+                <View style={styles.singleReason}>
+                  <Text style={styles.textCheckMark}>{reasons[2] ? "(x)" : "( )"} </Text>
+                  <Text>Asigurarea de bunuri care acoperă necesitățile de bază ale persoanelor și animalelor de companie/domestice</Text>
+                </View>
+
+                 <View style={styles.singleReason}>
+                    <Text style={styles.textCheckMark}>{reasons[3] ? "(x)" : "( )"} </Text>
+                   <Text>Asistență medicală care nu poate fi amânată și nici realizată de la distanță</Text>
+                 </View>
+
+                 <View style={styles.singleReason}>
+                    <Text style={styles.textCheckMark}>{reasons[4] ? "(x)" : "( )"} </Text>
+                   <Text>Motive justificate, precum îngrijirea/ însoțirea unui minor/copilului, asistența persoanelor vârstnice, bolnave sau cu dizabilități ori deces al unui membru de familie</Text>
+                 </View>
+
+                 <View style={styles.singleReason}>
+                    <Text style={styles.textCheckMark}>{reasons[5] ? "(x)" : "( )"} </Text>
+                   <Text>Activitate fizică individuală (cu excluderea oricăror activități sportive de echipă/ colective) sau pentru nevoile animalelor de companie/domestice, în apropierea locuinței</Text>
+                 </View>
+
+                 <View style={styles.singleReason}>
+                    <Text style={styles.textCheckMark}>{reasons[6] ? "(x)" : "( )"} </Text>
+                   <Text>Realizarea de activități agricole</Text>
+                 </View>
+
+                 <View style={styles.singleReason}>
+                    <Text>{reasons[7] ? "(x)" : "( )"} </Text>
+                   <Text>Scopuri umanitare sau de voluntariat</Text>
+                 </View>
+                 
+                 <View style={styles.singleReason}>
+                    <Text style={styles.textCheckMark}>{reasons[8] ? "(x)" : "( )"} </Text>
+                   <Text>Comercializarea de produse agroalimentare (în cazul producătorilor agricoli)</Text>
+                 </View>
+
+                 <View style={styles.singleReason}>
+                    <Text style={styles.textCheckMark}>{reasons[9] ? "(x)" : "( )"} </Text>
+                   <Text>Asigurarea de bunuri necesare desfășurării activității profesionale.
+                    Se va bifa doar motivul/motivele deplasării dintre cele prevăzute în listă, nefiind permise deplasări realizate invocând alte motive decât cele prevăzute în Ordonanța Militară nr. 3/2020.</Text>
+                 </View>
+               
             </View>
         </View>
 
