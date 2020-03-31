@@ -1,5 +1,5 @@
 import { PDFViewer, PDFDownloadLink } from '@react-pdf/renderer';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FormGroup, Jumbotron, Button } from "react-bootstrap";
 import AutosizeInput from 'react-input-autosize';
 import SignatureCanvas from 'react-signature-canvas';
@@ -30,7 +30,29 @@ function Formular(){
 
     const [signature, setSignature] = useState("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlgAAACaCAYAAAB12TZKAAAIGklEQVR4Xu3cMUoDURhG0fcKlxTXoqXYWQluQ3AXkvRuwcbKpQgKFhYjwcokTuMtT8oM+YrDX1wCyRxeBAgQIECAAAECqcBM14wRIECAAAECBAgMgeUICBAgQIAAAQKxgMCKQc0RIECAAAECBASWGyBAgAABAgQIxAICKwY1R4AAAQIECBAQWG6AAAECBAgQIBALCKwY1BwBAgQIECBA4GRgbbbLzdfneHy9mm+HRGvPcBIgQIAAAQIECIzjv2nY7Ja7uYz7Pc7LxfwVYGvPYBIgQIAAAQIECPwIHH2DtdkuD3OM25OBtfIMKAECBAgQIECAwB+BtX/7fLdcnn2Mp+fr+X4ItfYMKgECBAgQIECAwIlvsKAQIECAAAECBAj8T8CvCP/n59MECBAgQIAAgSMBgeUoCBAgQIAAAQKxgMCKQc0RIECAAAECBASWGyBAgAABAgQIxAICKwY1R4AAAQIECBAQWG6AAAECBAgQIBALCKwY1BwBAgQIECBAQGC5AQIECBAgQIBALCCwYlBzBAgQIECAAAGB5QYIECBAgAABArGAwIpBzREgQIAAAQIEBJYbIECAAAECBAjEAgIrBjVHgAABAgQIEBBYboAAAQIECBAgEAsIrBjUHAECBAgQIEBAYLkBAgQIECBAgEAsILBiUHMECBAgQIAAAYHlBggQIECAAAECsYDAikHNESBAgAABAgQElhsgQIAAAQIECMQCAisGNUeAAAECBAgQEFhugAABAgQIECAQCwisGNQcAQIECBAgQEBguQECBAgQIECAQCwgsGJQcwQIECBAgAABgeUGCBAgQIAAAQKxgMCKQc0RIECAAAECBASWGyBAgAABAgQIxAICKwY1R4AAAQIECBAQWG6AAAECBAgQIBALCKwY1BwBAgQIECBAQGC5AQIECBAgQIBALCCwYlBzBAgQIECAAAGB5QYIECBAgAABArGAwIpBzREgQIAAAQIEBJYbIECAAAECBAjEAgIrBjVHgAABAgQIEBBYboAAAQIECBAgEAsIrBjUHAECBAgQIEBAYLkBAgQIECBAgEAsILBiUHMECBAgQIAAAYHlBggQIECAAAECsYDAikHNESBAgAABAgQElhsgQIAAAQIECMQCAisGNUeAAAECBAgQEFhugAABAgQIECAQCwisGNQcAQIECBAgQEBguQECBAgQIECAQCwgsGJQcwQIECBAgAABgeUGCBAgQIAAAQKxgMCKQc0RIECAAAECBASWGyBAgAABAgQIxAICKwY1R4AAAQIECBAQWG6AAAECBAgQIBALCKwY1BwBAgQIECBAQGC5AQIECBAgQIBALCCwYlBzBAgQIECAAAGB5QYIECBAgAABArGAwIpBzREgQIAAAQIEBJYbIECAAAECBAjEAgIrBjVHgAABAgQIEBBYboAAAQIECBAgEAsIrBjUHAECBAgQIEBAYLkBAgQIECBAgEAsILBiUHMECBAgQIAAAYHlBggQIECAAAECsYDAikHNESBAgAABAgQElhsgQIAAAQIECMQCAisGNUeAAAECBAgQEFhugAABAgQIECAQCwisGNQcAQIECBAgQEBguQECBAgQIECAQCwgsGJQcwQIECBAgAABgeUGCBAgQIAAAQKxgMCKQc0RIECAAAECBASWGyBAgAABAgQIxAICKwY1R4AAAQIECBAQWG6AAAECBAgQIBALCKwY1BwBAgQIECBAQGC5AQIECBAgQIBALCCwYlBzBAgQIECAAAGB5QYIECBAgAABArGAwIpBzREgQIAAAQIEBJYbIECAAAECBAjEAgIrBjVHgAABAgQIEBBYboAAAQIECBAgEAsIrBjUHAECBAgQIEBAYLkBAgQIECBAgEAsILBiUHMECBAgQIAAAYHlBggQIECAAAECsYDAikHNESBAgAABAgQElhsgQIAAAQIECMQCAisGNUeAAAECBAgQEFhugAABAgQIECAQCwisGNQcAQIECBAgQEBguQECBAgQIECAQCwgsGJQcwQIECBAgAABgeUGCBAgQIAAAQKxgMCKQc0RIECAAAECBASWGyBAgAABAgQIxAICKwY1R4AAAQIECBAQWG6AAAECBAgQIBALCKwY1BwBAgQIECBAQGC5AQIECBAgQIBALCCwYlBzBAgQIECAAAGB5QYIECBAgAABArGAwIpBzREgQIAAAQIEBJYbIECAAAECBAjEAgIrBjVHgAABAgQIEBBYboAAAQIECBAgEAsIrBjUHAECBAgQIEBAYLkBAgQIECBAgEAsILBiUHMECBAgQIAAAYHlBggQIECAAAECsYDAikHNESBAgAABAgQElhsgQIAAAQIECMQCAisGNUeAAAECBAgQEFhugAABAgQIECAQCwisGNQcAQIECBAgQEBguQECBAgQIECAQCwgsGJQcwQIECBAgAABgeUGCBAgQIAAAQKxgMCKQc0RIECAAAECBASWGyBAgAABAgQIxAICKwY1R4AAAQIECBAQWG6AAAECBAgQIBALCKwY1BwBAgQIECBAQGC5AQIECBAgQIBALCCwYlBzBAgQIECAAAGB5QYIECBAgAABArGAwIpBzREgQIAAAQIEBJYbIECAAAECBAjEAgIrBjVHgAABAgQIEBBYboAAAQIECBAgEAsIrBjUHAECBAgQIEBAYLkBAgQIECBAgEAsILBiUHMECBAgQIAAAYHlBggQIECAAAECsYDAikHNESBAgAABAgQElhsgQIAAAQIECMQCAisGNUeAAAECBAgQ+AaXcyybuxuKegAAAABJRU5ErkJggg==");
 
+    const [dataWrapper, setDataWrapper] = useState({
+        values, signature, humanDate
+    })
 
+    const refreshDataWrapper = () => {
+        //we use a data wrapper because if we modify the state directly, the form will be laggy and have a slow performance, because it will rerender just everytime. 
+
+        setDataWrapper({
+            signature,
+            humanDate,
+            values
+        })
+    }
+
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            console.log('interval');
+            refreshDataWrapper();
+        }, 1000);
+
+        return () => clearInterval(intervalId)
+    })
 
     const setDate = (e) => {
         const newDate = e._d;
@@ -54,9 +76,9 @@ function Formular(){
     }
 
     const grabImage = e => {
-        console.log('grabbing image');
         let trimmedCanvas = sigPad.getCanvas().toDataURL('image/png');
         setSignature(trimmedCanvas)
+        refreshDataWrapper();
     }
 
     const resetSignature = e =>{
@@ -180,14 +202,11 @@ sau pentru nevoile animalelor de companie/domestice, în apropierea locuinței
                                 <Button onClick={() => resetSignature()} variant="danger">
                                     Resetează semnatura
                                 </Button>
-                                <SignatureCanvas signature={signature} penColor='#36a8ff' canvasProps={{ className: 'sigCanvas'}} 
-                                ref={(ref) => sigPad = ref}
+                                <SignatureCanvas signature={signature} penColor='#36a8ff' canvasProps={{ className: 'sigCanvas'}} onEnd={() => grabImage()}
+                                ref={(ref) => sigPad = ref}  
                                 />
                                 
-                                <Button onClick={() => grabImage()}>
-                                    Aplică semnatura
-                                </Button>
-
+                       
                             </article>
                            
                         </section>
@@ -203,7 +222,7 @@ sau pentru nevoile animalelor de companie/domestice, în apropierea locuinței
                 <MyDocument signature={signature} theDate={humanDate} values={values} reasons={reasons} />
              </PDFViewer> */}
 
-            <PDFDownloadLink document={<MyDocument signature={signature}  theDate={humanDate} values={values} reasons={reasons} />} fileName="declaratie.pdf" >
+            <PDFDownloadLink document={<MyDocument signature={dataWrapper.signature}  theDate={dataWrapper.humanDate} values={dataWrapper.values} reasons={reasons} />} fileName="declaratie.pdf" >
                {({ loading }) => (loading ? 'Se incarcă' : <Button size="lg">Descarcă documentul</Button>)}
             </PDFDownloadLink>
 
