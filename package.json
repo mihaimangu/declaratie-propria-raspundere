@@ -22,7 +22,7 @@
     "react-input-autosize": "^2.2.2",
     "react-native-elements": "^1.2.7",
     "react-pdf": "^4.1.0",
-    "react-scripts": "3.4.1",
+    "react-scripts": "5.0.1",
     "react-signature-canvas": "^1.0.3"
   },
   "scripts": {
